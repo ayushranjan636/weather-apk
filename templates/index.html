@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            text-align: center;
+            padding: 50px;
+        }
+        input[type="text"] {
+            padding: 10px;
+            font-size: 16px;
+        }
+        input[type="submit"] {
+            padding: 10px 20px;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        .weather-info {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Weather App</h1>
+    <form action="/weather" method="post">
+        <input type="text" name="city" placeholder="Enter city" required>
+        <input type="submit" value="Get Weather">
+    </form>
+    <div class="weather-info">
+        {% if error %}
+            <p style="color: red;">{{ error }}</p>
+        {% elif city %}
+            <p>The weather in {{ city }} is: {{ weather }}</p>
+            <p>The temperature in {{ city }} is: {{ temp }}ºC</p>
+        {% endif %}
+    </div>
+</body>
+</html>
